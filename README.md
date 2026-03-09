@@ -38,8 +38,7 @@ venta-casas/
 - **Anchor**
 - **Rust**
 - **TypeScript**
-- **Devnet**: Network para pruebas de Solana's (SOL gratis via Airdrop)
----
+- **Devnet**: Network para pruebas de Solana (SOL gratis via Airdrop)
 
 ---
 
