@@ -1,5 +1,4 @@
-# 🏠 Venta de Casas en Solana
-
+# 🏠 Venta de Casas con Solana
 
 CRUD básico de un Solana Program desarrollado con **Rust + Anchor** para gestionar el listado de casas en venta directamente en la blockchain de Solana.
 
@@ -7,7 +6,7 @@ CRUD básico de un Solana Program desarrollado con **Rust + Anchor** para gestio
 
 ## 📋 ¿Qué hace este programa?
 
-Este programa permite a cualquier usuario con una wallet de Solana:
+Este programa permite a cualquier usuario con una wallet de Solana realizar:
 
 | Instrucción | Descripción |
 |---|---|
@@ -53,6 +52,63 @@ pub struct CasaState {
 }
 ```
 
+---
+
+## 🚀 Importar a Solana Playground
+
+### Paso 1: Realiza un Fork del repositorio
+
+Primero, asegúrate de tener el repositorio en tu cuenta de GitHub usando el botón **`Fork`**.
+
+### Paso 2: Copia el enlace de tu repositorio
+
+Copia la URL de tu repositorio desde el navegador:
+
+```
+https://github.com/TU_USUARIO/Venta_Casas-Solana
+```
+
+### Paso 3: Abre el repositorio en Solana Playground
+
+Combina tu URL con el playground:
+
+```
+https://beta.solpg.io/github.com/TU_USUARIO/Venta_Casas-Solana
+```
+
+Pega esa URL en tu navegador y presiona **Enter**.
+
+### Paso 4: Conecta con tu wallet
+
+1. Haz clic en **"Not Connected"** (esquina inferior izquierda)
+2. En la ventana emergente, haz clic en **"Continue"**
+3. Solana Playground creará una wallet de Devnet automáticamente
+4. Solicita SOL de prueba con el botón **"Airdrop"**
+
+---
+
+## 🛠️ Compilar y Desplegar
+
+### Desde Solana Playground (recomendado):
+1. Haz clic en el ícono de **Build**
+2. Espera que compile sin errores
+3. Haz clic en **Deploy**
+4. ¡Tu programa ya está en Devnet!
+
+### Desde una máquina local:
+```bash
+# Instalar dependencias
+yarn install
+
+# Compilar el programa
+anchor build
+
+# Ejecutar los tests
+anchor test
+
+# Desplegar en Devnet
+anchor deploy --provider.cluster devnet
+```
 
 ---
 
@@ -73,10 +129,10 @@ Los tests verifican:
 
 ---
 
-## 💻 Ejecutar el Cliente
+## 💻 Ejecuta el Cliente
 
 ```bash
-# Asegurese de haber desplegado el programa primero
+# Asegúrate de haber desplegado el programa primero
 anchor run client
 
 # O directamente con ts-node
@@ -108,6 +164,6 @@ El programa garantiza que:
 
 ## 👤 Sobre el Proyecto
 
-El proyecto fue desarrollado como un ejercicio para la certificación **Solana Developer** de WayLearnLatam, que fue adaptando el ejemplo de la Biblioteca Solana pero para este caso de uso de venta de bienes raíces.
+El proyecto fue desarrollado como un ejercicio para la certificación **Solana Developer** de WayLearnLatam, en donde se está adaptando el ejemplo de la Biblioteca Solana para este caso de uso de venta de bienes raíces.
 
 > ℹ️ **Nota:** Este programa solo implementa el backend (on-chain). No incluye frontend.
