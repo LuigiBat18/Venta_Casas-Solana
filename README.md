@@ -171,9 +171,9 @@ El programa garantiza que:
 - [Documentación de Solana](https://solana.com/docs)
 
 ---
-
 ## 👤 Sobre el Proyecto
 
 El proyecto fue desarrollado como un ejercicio para la certificación **Solana Developer** de WayLearnLatam, en donde se está adaptando el ejemplo de la Biblioteca Solana para este caso de uso de venta de bienes raíces.
 
 > ℹ️ **Nota:** Este programa solo implementa el backend (on-chain). No incluye frontend.
+> ℹ️ **Transaction verificable:** https://explorer.solana.com/tx/3CG2sdQvohSAfXruQkNKdycJM5S1JARKoSSW5W1PeWRyE4umMidWK5svMeGB1BYSxhpDKouhVX36XX7VSoLqXnr6?cluster=devnet
