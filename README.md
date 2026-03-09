@@ -1,60 +1,117 @@
-# Biblioteca en Solana
+# 🏠 Venta de Casas en Solana
 
-![banner](./images/banner-biblioteca.jpg)
 
-CRUD básico de un Solana Program desarrollado con Rust y Anchor desde el Solana Playground. 
+CRUD básico de un Solana Program desarrollado con **Rust + Anchor** para gestionar el listado de casas en venta directamente en la blockchain de Solana.
 
-Puedes comenzar dándole Fork a este repositorio (abajo te explicamos como 👇), **hemos preparado un entorno de codespaces listo para que no tengas que instalar nada**, solo déjate llevar por la fluidez de los ejercicios y temas desarrollados especialmente para ti. 
+---
 
-Asegúrate de clonar este repositorio a tu cuenta usando el botón **`Fork`**.
+## 📋 ¿Qué hace este programa?
 
-![fork](./images/fork.png)
+Este programa permite a cualquier usuario con una wallet de Solana:
 
-## Importando el proyecto 
+| Instrucción | Descripción |
+|---|---|
+| `registrar_casa` | Publica una casa en venta en la blockchain |
+| `actualizar_casa` | Modifica los datos de la casa (precio, descripción, etc.) |
+| `marcar_como_vendida` | Cambia el estado de la casa a "vendida" |
+| `eliminar_casa` | Elimina el listado y recupera la renta de la cuenta |
 
-Ya con el repositorio en tu cuenta lo siguiente que debes hacer copiar el `enlace de tu repositorio`, lo que se puede hacer directamente desdel navegador:
+Cada casa se almacena en una **PDA (Program Derived Address)** derivada del título de la casa y la wallet del vendedor, garantizando que solo el vendedor puede modificar o eliminar su propio listado.
 
-![repo](./images/repo.png)
-Posteriormente, lo uniremos con el siguiente enlace en nuestro navegador de preferencia:
+---
 
-```url
-https://beta.solpg.io/
+## 🗂️ Estructura del Proyecto
+
+```
+venta-casas/
+├── src/
+│   └── lib.rs          # Programa principal en Rust + Anchor
+├── client/
+│   └── main.ts         # Cliente TypeScript para interactuar con el programa
+├── tests/
+│   └── venta-casas.ts  # Tests con Anchor y Chai
+└── README.md
 ```
 
-Lo que nos dará algo parecido a:
+---
 
-![url](./images/url.png)
+## 🏗️ Estructura de Datos (CasaState)
 
-Al pulsar enter seremos enviados al `Solana Playground` con nuestro proyecto abierto:
+Cada casa almacenada en la blockchain contiene los siguientes campos:
 
-![pg](./images/pg.png)
+```rust
+pub struct CasaState {
+    pub vendedor:        Pubkey,   // Wallet del vendedor (32 bytes)
+    pub titulo:          String,   // Nombre del inmueble (máx. 60 chars)
+    pub descripcion:     String,   // Descripción detallada (máx. 300 chars)
+    pub precio:          u64,      // Precio en lamports
+    pub direccion:       String,   // Dirección física (máx. 120 chars)
+    pub habitaciones:    u8,       // Número de habitaciones
+    pub metros_cuadrados: u32,     // Metros cuadrados de construcción
+    pub disponible:      bool,     // true = en venta | false = vendida
+    pub bump:            u8,       // Bump del PDA
+}
+```
 
-Para guardarlo solo damos clic en el boton `import` y asignamos un nombre:
+> 💡 **¿Por qué lamports?** En Solana, los precios se manejan en lamports (1 SOL = 1,000,000,000 lamports) para evitar decimales y errores de precisión.
 
-![import](./images/import.png)
+---
 
-## Preparacion del entorno
+---
 
-Primero conectaremos el entorno con la devnet, lo que tambien procederá a la creación de una wallet. Para eso daremos clic en donde dice **Not Conected**:
+## 🧪 Ejecutar los Tests
 
-![playground1](./images/playground1.png)
+```bash
+anchor test
+```
 
-Saldrá la siguiente ventana donde daremos en el botón **Continue**:
+Los tests verifican:
+- ✅ Registrar una casa correctamente
+- ✅ Actualizar los datos de una casa
+- ✅ Marcar una casa como vendida
+- ❌ Intentar vender una casa ya vendida (debe fallar)
+- ✅ Registrar múltiples casas del mismo vendedor
+- ✅ Eliminar una casa y recuperar la renta
+- ❌ Título demasiado largo (debe fallar con `TituloDemasiadoLargo`)
 
-![wallet](./images/wallet.png)
+---
 
-Como resultado se mostrará la siguiente información:
+## 💻 Ejecutar el Cliente
 
-![status](./images/status.png)
+```bash
+# Asegúrate de haber desplegado el programa primero
+anchor run client
 
-* En verde: el estado de la conexión y el entorno al que se encuentra conectado
+# O directamente con ts-node
+ts-node client/main.ts
+```
 
-* En amarillo: la la dirección de la wallet conectada
+El cliente ejecuta el flujo completo: registrar → actualizar → listar → marcar vendida → eliminar.
 
-* En azul: la cantidad de tokens en la wallet
+---
 
-> ℹ️ ¿Quieres ver el ejemplo de un "Hola Mundo" en Solana?. Da clic aquí: 👉 [Ver Ejemplo](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/build-deploy)
+## 🔐 Seguridad del Programa
 
-> ℹ️ ¿Cuentas con una Wallet de [Phantom](https://phantom.com/) que deseas importar?, Da clic aquí para ver como hacerlo: 
+El programa garantiza que:
 
-👉 [Como Importar una Wallet](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/import-key-a-playground)
+- **Solo el vendedor puede modificar su casa** mediante la restricción `has_one = vendedor`
+- **Las PDAs son únicas** por combinación de `[titulo, vendedor]`
+- **No se puede vender una casa dos veces** gracias al error `CasaYaVendida`
+- **Los datos se validan** antes de almacenarse (longitudes y valores positivos)
+
+---
+
+## 🌐 Recursos
+
+- [Solana Playground](https://beta.solpg.io/)
+- [Anchor Framework](https://www.anchor-lang.com/)
+- [WayLearn Latam](https://waylearn.gitbook.io/solana-developer-certification)
+- [Documentación de Solana](https://solana.com/docs)
+
+---
+
+## 👤 Sobre el Proyecto
+
+Proyecto desarrollado como ejercicio para la certificación **Solana Developer** de WayLearnLatam, adaptando el ejemplo de Biblioteca para el caso de uso de venta de bienes raíces.
+
+> ℹ️ **Nota:** Este programa solo implementa el backend (on-chain). No incluye frontend.
