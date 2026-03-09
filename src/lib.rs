@@ -6,7 +6,7 @@ declare_id!("8v1ccGVLwGMsc4Si9oLH2eGTfrmSJFTBGET7yprRZZhP");
 pub mod venta_casas {
     use super::*;
 
-    pub fn registrar_casa(
+    pub fn registrar_casa( // Hace el registro de una casa
         ctx: Context<RegistrarCasa>,
         titulo: String,
         descripcion: String,
@@ -37,7 +37,7 @@ pub mod venta_casas {
         Ok(())
     }
 
-    pub fn actualizar_casa(
+    pub fn actualizar_casa( // Actualiza cualquier campo del registro de la casas
         ctx: Context<ActualizarCasa>,
         titulo: String,
         descripcion: String,
@@ -65,7 +65,7 @@ pub mod venta_casas {
         Ok(())
     }
 
-    pub fn marcar_como_vendida(ctx: Context<MarcarVendida>, titulo: String) -> Result<()> {
+    pub fn marcar_como_vendida(ctx: Context<MarcarVendida>, titulo: String) -> Result<()> { // Si no ocurre nada raro, se puede vender la casa
         let casa = &mut ctx.accounts.casa;
         require!(casa.disponible, ErrorCasa::CasaYaVendida);
         casa.disponible = false;
@@ -73,7 +73,7 @@ pub mod venta_casas {
         Ok(())
     }
 
-    pub fn eliminar_casa(_ctx: Context<EliminarCasa>, titulo: String) -> Result<()> {
+    pub fn eliminar_casa(_ctx: Context<EliminarCasa>, titulo: String) -> Result<()> { // Eliminación total del registro
         msg!("Casa eliminada: {}", titulo);
         Ok(())
     }
@@ -164,7 +164,7 @@ pub struct CasaState {
     pub bump: u8,
 }
 
-// ─── Errores ─────────────────────────────────────────────────────────────────
+// ─── Posibles errores durante el registro de la casa ─────────────────────────────────────────────────────────────────
 
 #[error_code]
 pub enum ErrorCasa {
