@@ -53,9 +53,6 @@ pub struct CasaState {
 }
 ```
 
-> 💡 **¿Por qué lamports?** En Solana, los precios se manejan en lamports (1 SOL = 1,000,000,000 lamports) para evitar decimales y errores de precisión.
-
----
 
 ---
 
@@ -79,7 +76,7 @@ Los tests verifican:
 ## 💻 Ejecutar el Cliente
 
 ```bash
-# Asegúrate de haber desplegado el programa primero
+# Asegurese de haber desplegado el programa primero
 anchor run client
 
 # O directamente con ts-node
@@ -104,7 +101,6 @@ El programa garantiza que:
 ## 🌐 Recursos
 
 - [Solana Playground](https://beta.solpg.io/)
-- [Anchor Framework](https://www.anchor-lang.com/)
 - [WayLearn Latam](https://waylearn.gitbook.io/solana-developer-certification)
 - [Documentación de Solana](https://solana.com/docs)
 
@@ -112,6 +108,6 @@ El programa garantiza que:
 
 ## 👤 Sobre el Proyecto
 
-Proyecto desarrollado como ejercicio para la certificación **Solana Developer** de WayLearnLatam, adaptando el ejemplo de Biblioteca para el caso de uso de venta de bienes raíces.
+El proyecto fue desarrollado como un ejercicio para la certificación **Solana Developer** de WayLearnLatam, que fue adaptando el ejemplo de la Biblioteca Solana pero para este caso de uso de venta de bienes raíces.
 
 > ℹ️ **Nota:** Este programa solo implementa el backend (on-chain). No incluye frontend.
