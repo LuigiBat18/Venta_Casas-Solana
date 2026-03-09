@@ -1,8 +1,8 @@
 # 🏠 Venta de Casas con Solana
 
-CRUD básico de Solana Program desarrollado con **Rust + Anchor** para gestionar el listado de casas en venta directamente en la blockchain de Solana.
+CRUD básico elaborado con Solana Program y desarrollado con **Rust + Anchor** para gestionar el listado de casas en venta directamente en la blockchain de Solana.
 
-Este proyeto se encuentra desplegado en **devnet** con el Program ID `8v1ccGVLwGMsc4Si9oLH2eGTfrmSJFTBGET7yprRZZhP` para su verificación de funcionalidad.
+Este proyecto se encuentra desplegado en **devnet** con el Program ID `8v1ccGVLwGMsc4Si9oLH2eGTfrmSJFTBGET7yprRZZhP` para su verificación de funcionalidad.
 
 ---
 
@@ -176,4 +176,5 @@ El programa garantiza que:
 El proyecto fue desarrollado como un ejercicio para la certificación **Solana Developer** de WayLearnLatam, en donde se está adaptando el ejemplo de la Biblioteca Solana para este caso de uso de venta de bienes raíces.
 
 > ℹ️ **Nota:** Este programa solo implementa el backend (on-chain). No incluye frontend.
+> 
 > ℹ️ **Transaction verificable:** https://explorer.solana.com/tx/3CG2sdQvohSAfXruQkNKdycJM5S1JARKoSSW5W1PeWRyE4umMidWK5svMeGB1BYSxhpDKouhVX36XX7VSoLqXnr6?cluster=devnet
