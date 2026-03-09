@@ -1,6 +1,6 @@
 # 🏠 Venta de Casas con Solana
 
-CRUD básico de un Solana Program desarrollado con **Rust + Anchor** para gestionar el listado de casas en venta directamente en la blockchain de Solana.
+CRUD básico de Solana Program desarrollado con **Rust + Anchor** para gestionar el listado de casas en venta directamente en la blockchain de Solana.
 
 ---
 
@@ -31,6 +31,15 @@ venta-casas/
 │   └── venta-casas.ts  # Tests con Anchor y Chai
 └── README.md
 ```
+---
+## 🛠️ Tecnologias usadas
+
+- **Solana**
+- **Anchor**
+- **Rust**
+- **TypeScript**
+- **Devnet**: Network para pruebas de Solana's (SOL gratis via Airdrop)
+---
 
 ---
 
